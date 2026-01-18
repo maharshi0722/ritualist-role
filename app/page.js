@@ -233,7 +233,7 @@ export default function Page() {
               <h1 className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
                 Ritual{" "}
                 <span className="bg-gradient-to-r from-amber-600 to-indigo-600 bg-clip-text text-transparent">
-                  Community Roles
+                Blockchain  Community Roles
                 </span>
               </h1>
 
