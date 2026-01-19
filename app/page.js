@@ -154,7 +154,7 @@ export default function Page() {
     return list;
   }, [roles, query, activeTier]);
 
-  const totalHolders = useMemo(() => roles.reduce((s, r) => s + (r.count || 0), 0), [roles]);
+  const totalHolders = 109303
 
   // Helper: close mobile menu on window resize to larger screens
   useEffect(() => {
@@ -275,9 +275,9 @@ export default function Page() {
             <div className="rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 p-5 sm:p-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm text-slate-500">Total holders</div>
+                  <div className="text-sm text-slate-500">Total Member</div>
                   <div className="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">{formatNumber(totalHolders)}</div>
-                  <div className="mt-2 text-xs text-slate-400">Based on your provided counts</div>
+                  <div className="mt-2 text-xs text-slate-400">Based on dc member counts</div>
                 </div>
               </div>
 
