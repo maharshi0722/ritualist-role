@@ -39,9 +39,32 @@ function RoleEmoji({ tag, className = "" }) {
     ritty: { emoji: "🕯️", color: "text-amber-700", bg: "bg-amber-50" }, // Image 3
     "ritty bitty": { emoji: "", color: "text-amber-700", bg: "bg-amber-50" },
     "radiant ritualist": { emoji: "✨", color: "text-amber-700", bg: "bg-amber-50" }, // Image 4
+    // NEW: Dunce uses custom image
+    dunce: { emoji: "", color: "text-slate-700", bg: "bg-slate-50" },
   };
 
   const entry = map[t] || null;
+
+  // NEW: Custom image for Dunce
+  if (t === "dunce") {
+    return (
+      <span
+        className={`inline-flex items-center gap-2 ${className}`}
+        aria-hidden
+        title={tag}
+      >
+        <span className="inline-grid place-items-center h-5 w-5 md:h-6 md:w-6 rounded-full bg-slate-50 ring-1 ring-slate-100 overflow-hidden">
+          <img
+            src="https://cdn.discordapp.com/emojis/1213457830372315216.webp?size=40"
+            alt="Dunce"
+            className="h-full w-full object-contain"
+            loading="lazy"
+            draggable={false}
+          />
+        </span>
+      </span>
+    );
+  }
 
   if (!entry) {
     return (
@@ -82,6 +105,8 @@ export default function Page() {
       { name: "Ritty", count: 432, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
       { name: "Ritty-Bitty", count: 727, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "ritty bitty" },
       { name: "NPC", count: 3134, tier: "Bad", desc: "This is just a shameful public badge.", tag: "NPC" },
+      // NEW: Dunce role
+      { name: "Dunce", count: 138, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
       { name: "Ascendant", count: 3546, tier: "Common", desc: "You have pledged to Ritual.", tag: "Ascendant" },
       { name: "Harmonic", count: 2550, tier: "Common", desc: "Not special at all.", tag: "Harmonic" },
       { name: "Blessed", count: 7731, tier: "Common", desc: "Forever blessed.", tag: "Blessed" },
@@ -229,11 +254,10 @@ export default function Page() {
         <section className="pt-8 sm:pt-10">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div>
-            
               <h1 className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
                 Ritual{" "}
                 <span className="bg-gradient-to-r from-amber-600 to-indigo-600 bg-clip-text text-transparent">
-                Blockchain  Community Roles
+                  Blockchain  Community Roles
                 </span>
               </h1>
 
@@ -298,7 +322,12 @@ export default function Page() {
           {/* responsive grid: 1 column on xs, 2 on sm, 3 on lg */}
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((r) => (
-              <RoleCard key={r.name} role={r} max={59958} onView={() => { setQuery(r.tag || r.name); setActiveTier("All"); try { const el = document.getElementById("roles"); if (el) el.scrollIntoView({ behavior: "smooth" }); } catch {} }} />
+              <RoleCard
+                key={r.name}
+                role={r}
+                max={59958}
+                onView={() => { setQuery(r.tag || r.name); setActiveTier("All"); try { const el = document.getElementById("roles"); if (el) el.scrollIntoView({ behavior: "smooth" }); } catch {} }}
+              />
             ))}
           </div>
         </section>
