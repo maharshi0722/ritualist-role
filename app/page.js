@@ -73,19 +73,60 @@ function RoleEmoji({ tag, className = "" }) {
   );
 }
 
-/* ---------- Page Component (responsive improvements) ---------- */
+/* ---------- Page Component ---------- */
 
 export default function Page() {
+  // ✅ Names from your Mods screenshot
+  const modsList = useMemo(
+    () => [
+      { name: "Dunken | Ritual", avatar: "" },
+      { name: "Ezra", avatar: "" },
+      { name: "Flash ⚡ | Ritual", avatar: "" },
+      { name: "Jez | Ritual", avatar: "" },
+      { name: "Josh | Ritual", avatar: "" },
+      { name: "Majorproject | Ritual", avatar: "" },
+      { name: "Stefan | Ritual (❖,❖)", avatar: "" },
+    ],
+    []
+  );
+
+  // ✅ Foundation team names (from your earlier screenshot)
+  const foundationTeamList = useMemo(
+    () => [
+      { name: "0xqtpie", avatar: "" },
+      { name: "Cdawg", avatar: "" },
+      { name: "Claire | Ritual", avatar: "" },
+      { name: "Elif Hilal Kara", avatar: "" },
+      { name: "Eva", avatar: "" },
+      { name: "Gurner cn | Ritual", avatar: "" },
+      { name: "Josh | Ritual", avatar: "" },
+      { name: "Mario Bruh", avatar: "" },
+      { name: "Mikyö", avatar: "" },
+      { name: "Saneel", avatar: "" },
+      { name: "Saneel", avatar: "" },
+      { name: "Val (❖,❖)", avatar: "" },
+      { name: "Wally", avatar: "" },
+      { name: "Wally | Ritual", avatar: "" },
+      { name: "celia9385", avatar: "" },
+      { name: "qtpie", avatar: "" },
+    ],
+    []
+  );
+
   const roles = useMemo(
     () => [
       { name: "Radiant Ritualist", count: 3, tier: "Legendary", desc: "Golden Ritualist super rare, only for real leaders.", tag: "Radiant Ritualist" },
       { name: "Ritualist", count: 81, tier: "Epic", desc: "Becoming a Ritualist is the highest honor in our community.", tag: "Ritualist" },
       { name: "Mage", count: 67, tier: "Rare", desc: "Ritualist with a mage specialization.", tag: "Mage" },
       { name: "Zealot", count: 23, tier: "Epic", desc: "High-conviction community member consistently shows up.", tag: "Zealot" },
+
+      { name: "Mods", count: 7, tier: "Epic", desc: "Moderators keeping the community clean and active.", tag: "Mods" },
+      { name: "Foundation Team", count: 16, tier: "Legendary", desc: "Core foundation members building and steering Ritual.", tag: "Foundation Team" },
+
       { name: "Ritty", count: 432, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
       { name: "Ritty-Bitty", count: 727, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "ritty bitty" },
       { name: "NPC", count: 3134, tier: "Bad", desc: "This is just a shameful public badge.", tag: "NPC" },
-      { name: "Dunce", count: 137, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
+      { name: "Dunce", count: 138, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
       { name: "Ascendant", count: 3546, tier: "Common", desc: "You have pledged to Ritual.", tag: "Ascendant" },
       { name: "Harmonic", count: 2550, tier: "Common", desc: "Not special at all.", tag: "Harmonic" },
       { name: "Blessed", count: 7731, tier: "Common", desc: "Forever blessed.", tag: "Blessed" },
@@ -99,7 +140,10 @@ export default function Page() {
   const [activeTier, setActiveTier] = useState("All");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Load Inter font
+  // ✅ accordion open states
+  const [openMods, setOpenMods] = useState(false);
+  const [openFoundation, setOpenFoundation] = useState(false);
+
   useEffect(() => {
     const id = "ritual-font-inter";
     if (document.getElementById(id)) return;
@@ -135,7 +179,6 @@ export default function Page() {
 
   const totalHolders = 109303;
 
-  // close mobile menu on resize
   useEffect(() => {
     function onResize() {
       if (window.innerWidth >= 768) setMobileMenuOpen(false);
@@ -152,7 +195,6 @@ export default function Page() {
           'Inter, "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial',
       }}
     >
-      {/* FIX: only ONE styled-jsx block (no nested) */}
       <style jsx global>{`
         @keyframes fadeUp {
           from {
@@ -203,7 +245,6 @@ export default function Page() {
           animation: pop 450ms ease both;
         }
 
-        /* shimmer overlay for stats card */
         .shimmer {
           position: relative;
           overflow: hidden;
@@ -215,12 +256,7 @@ export default function Page() {
           left: 0;
           width: 40%;
           height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.7),
-            transparent
-          );
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
           transform: translateX(-120%);
           animation: shimmerMove 2.8s ease-in-out infinite;
           pointer-events: none;
@@ -243,40 +279,34 @@ export default function Page() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(180deg,#fffaf3 0%, #fbf6f0 50%, #f6f3ee 100%)",
+            background: "linear-gradient(180deg,#fffaf3 0%, #fbf6f0 50%, #f6f3ee 100%)",
           }}
         />
 
-        {/* geometric accents */}
         <div
           className="hidden md:block absolute -top-40 left-0 h-[480px] w-[480px] rounded-[36%] blur-2xl opacity-70 anim-floaty"
           style={{
-            background:
-              "radial-gradient(circle at 30% 30%, rgba(255,183,77,0.12), transparent 35%)",
+            background: "radial-gradient(circle at 30% 30%, rgba(255,183,77,0.12), transparent 35%)",
             transform: "rotate(-12deg)",
           }}
         />
         <div
           className="hidden md:block absolute top-12 right-[-100px] h-[420px] w-[420px] rounded-[40%] blur-2xl opacity-65 anim-floaty"
           style={{
-            background:
-              "radial-gradient(circle at 70% 30%, rgba(124,77,255,0.10), transparent 36%)",
+            background: "radial-gradient(circle at 70% 30%, rgba(124,77,255,0.10), transparent 36%)",
           }}
         />
         <div
           className="hidden md:block absolute bottom-[-100px] left-[-80px] h-[420px] w-[420px] rounded-[38%] blur-2xl opacity-55 anim-floaty"
           style={{
-            background:
-              "radial-gradient(circle at 30% 70%, rgba(34,197,94,0.08), transparent 36%)",
+            background: "radial-gradient(circle at 30% 70%, rgba(34,197,94,0.08), transparent 36%)",
           }}
         />
 
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage:
-              "radial-gradient(rgba(0,0,0,0.01) 1px, transparent 2px)",
+            backgroundImage: "radial-gradient(rgba(0,0,0,0.01) 1px, transparent 2px)",
             backgroundSize: "4px 4px",
             opacity: 0.03,
           }}
@@ -297,12 +327,30 @@ export default function Page() {
           </div>
 
           <nav className="hidden md:flex items-center gap-3">
-            <a href="#roles" className="rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-gray-100 transition">Roles</a>
-            <a href="#about" className="rounded-md bg-slate-900 text-white px-3 py-2 text-sm font-semibold hover:opacity-95 transition">About</a>
-            <a href="https://x.com/ritualnet" target="_blank" rel="noopener noreferrer" title="X" aria-label="X" className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white shadow-sm ring-1 ring-gray-100 text-slate-900 hover:shadow-md transition-transform transform hover:-translate-y-0.5">
+            <a href="#roles" className="rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-gray-100 transition">
+              Roles
+            </a>
+            <a href="#about" className="rounded-md bg-slate-900 text-white px-3 py-2 text-sm font-semibold hover:opacity-95 transition">
+              About
+            </a>
+            <a
+              href="https://x.com/ritualnet"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="X"
+              aria-label="X"
+              className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white shadow-sm ring-1 ring-gray-100 text-slate-900 hover:shadow-md transition-transform transform hover:-translate-y-0.5"
+            >
               <XIcon className="h-5 w-5" />
             </a>
-            <a href="https://discord.gg/stVA4xqU" target="_blank" rel="noopener noreferrer" title="Discord" aria-label="Discord" className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-indigo-50 to-cyan-50 text-indigo-700 shadow-sm hover:brightness-105 transition-transform transform hover:-translate-y-0.5">
+            <a
+              href="https://discord.gg/stVA4xqU"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Discord"
+              aria-label="Discord"
+              className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-indigo-50 to-cyan-50 text-indigo-700 shadow-sm hover:brightness-105 transition-transform transform hover:-translate-y-0.5"
+            >
               <DiscordIcon className="h-5 w-5" />
             </a>
           </nav>
@@ -328,13 +376,27 @@ export default function Page() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white/95 rounded-lg shadow-lg p-4 mb-4 anim-pop">
             <div className="flex flex-col gap-3">
-              <a href="#roles" className="px-3 py-2 text-sm text-slate-800 rounded-md hover:bg-gray-100">Roles</a>
-              <a href="#about" className="px-3 py-2 text-sm text-slate-800 rounded-md hover:bg-gray-100">About</a>
+              <a href="#roles" className="px-3 py-2 text-sm text-slate-800 rounded-md hover:bg-gray-100">
+                Roles
+              </a>
+              <a href="#about" className="px-3 py-2 text-sm text-slate-800 rounded-md hover:bg-gray-100">
+                About
+              </a>
               <div className="flex items-center gap-2 pt-1">
-                <a href="https://x.com/ritualnet" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white ring-1 ring-gray-100 text-slate-900">
+                <a
+                  href="https://x.com/ritualnet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white ring-1 ring-gray-100 text-slate-900"
+                >
                   <XIcon className="h-5 w-5" /> <span className="text-sm">X</span>
                 </a>
-                <a href="https://discord.gg/stVA4xqU" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-gradient-to-br from-indigo-50 to-cyan-50 text-indigo-700">
+                <a
+                  href="https://discord.gg/stVA4xqU"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-gradient-to-br from-indigo-50 to-cyan-50 text-indigo-700"
+                >
                   <DiscordIcon className="h-5 w-5" /> <span className="text-sm">Discord</span>
                 </a>
               </div>
@@ -353,7 +415,7 @@ export default function Page() {
               <h1 className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
                 Ritual{" "}
                 <span className="bg-gradient-to-r from-amber-600 to-indigo-600 bg-clip-text text-transparent">
-                  Blockchain  Community Roles
+                  Blockchain Community Roles
                 </span>
               </h1>
 
@@ -362,12 +424,16 @@ export default function Page() {
               </p>
 
               <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3">
-                <a href="#roles" className="rounded-2xl bg-slate-900 px-4 sm:px-5 py-2.5 text-sm font-semibold text-white hover:opacity-95 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">Explore roles</a>
-                <a href="#about" className="rounded-2xl bg-white px-4 sm:px-5 py-2.5 text-sm font-semibold text-slate-900 ring-1 ring-gray-100 hover:shadow-sm transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">Role meanings</a>
+                <a href="#roles" className="rounded-2xl bg-slate-900 px-4 sm:px-5 py-2.5 text-sm font-semibold text-white hover:opacity-95 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">
+                  Explore roles
+                </a>
+                <a href="#about" className="rounded-2xl bg-white px-4 sm:px-5 py-2.5 text-sm font-semibold text-slate-900 ring-1 ring-gray-100 hover:shadow-sm transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">
+                  Role meanings
+                </a>
               </div>
             </div>
 
-            {/* Stats card */}
+            {/* Stats card + clickable accordions */}
             <div className="rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 p-5 sm:p-6 anim-fadeUp shimmer" style={{ animationDelay: "110ms" }}>
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -378,8 +444,18 @@ export default function Page() {
               </div>
 
               <div className="mt-4 sm:mt-5 grid grid-cols-2 gap-3">
-                <MiniStat label="Rarest" value="Radiant Ritualist" />
-                <MiniStat label="Biggest" value="Community" />
+                <MiniStat label="Foundation Team" value="16" />
+                <MiniStat label="Mods" value="7" />
+              </div>
+
+              <div className="mt-4 space-y-3">
+                <Accordion title="Mods" count={modsList.length} open={openMods} onToggle={() => setOpenMods((s) => !s)}>
+                  <MemberGrid people={modsList} subtitle="Moderators" />
+                </Accordion>
+
+                <Accordion title="Foundation Team" count={foundationTeamList.length} open={openFoundation} onToggle={() => setOpenFoundation((s) => !s)}>
+                  <MemberGrid people={foundationTeamList} subtitle="Foundation" />
+                </Accordion>
               </div>
             </div>
           </div>
@@ -409,7 +485,9 @@ export default function Page() {
                 className="w-full sm:w-[190px] rounded-2xl bg-white ring-1 ring-gray-100 px-4 py-3 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-cyan-200 transition"
               >
                 {tiers.map((t) => (
-                  <option key={t} value={t} className="bg-white text-slate-800">Filter: {t}</option>
+                  <option key={t} value={t} className="bg-white text-slate-800">
+                    Filter: {t}
+                  </option>
                 ))}
               </select>
             </div>
@@ -429,11 +507,7 @@ export default function Page() {
 
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {roles.map((r, i) => (
-              <div
-                key={r.name}
-                className="rounded-lg bg-gray-50 ring-1 ring-gray-100 p-4 anim-fadeUp"
-                style={{ animationDelay: `${200 + i * 18}ms` }}
-              >
+              <div key={r.name} className="rounded-lg bg-gray-50 ring-1 ring-gray-100 p-4 anim-fadeUp" style={{ animationDelay: `${200 + i * 18}ms` }}>
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <RoleEmoji tag={r.tag} />
@@ -453,6 +527,80 @@ export default function Page() {
       </main>
     </div>
   );
+}
+
+/* ---------- Accordion + Members UI ---------- */
+
+function Accordion({ title, count, open, onToggle, children }) {
+  return (
+    <div className="rounded-2xl bg-gray-50 ring-1 ring-gray-100 overflow-hidden">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-gray-100/70 transition"
+        aria-expanded={open}
+      >
+        <div className="min-w-0">
+          <div className="text-sm font-semibold text-slate-900 truncate">{title}</div>
+          <div className="mt-0.5 text-xs text-slate-500">{count} members</div>
+        </div>
+
+        <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white ring-1 ring-gray-100 text-slate-700">
+          <svg className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </button>
+
+      {open ? <div className="px-4 pb-4">{children}</div> : null}
+    </div>
+  );
+}
+
+function MemberGrid({ people, subtitle = "Member" }) {
+  return (
+    <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+      {people.map((p, idx) => (
+        <div key={`${p.name}-${idx}`} className="flex items-center gap-3 rounded-xl bg-white ring-1 ring-gray-100 px-3 py-2.5">
+          <Avatar name={p.name} src={p.avatar} />
+          <div className="min-w-0">
+            <div className="text-sm font-semibold text-slate-900 truncate">{p.name}</div>
+            <div className="text-xs text-slate-500">{subtitle}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ✅ Avatar: show ONLY 1 character */
+function Avatar({ src, name }) {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={name}
+        className="h-9 w-9 rounded-full object-cover ring-1 ring-gray-100"
+        loading="lazy"
+        draggable={false}
+      />
+    );
+  }
+
+  const initial = getInitialOne(name);
+
+  return (
+    <div className="h-9 w-9 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 ring-1 ring-gray-100 flex items-center justify-center text-xs font-bold text-slate-700">
+      {initial}
+    </div>
+  );
+}
+
+function getInitialOne(name) {
+  const s = String(name || "").trim();
+  if (!s) return "R";
+  const ch = Array.from(s)[0] || "R"; // handles 0x..., emojis, etc.
+  return String(ch).toUpperCase();
 }
 
 /* ---------- RoleCard + helpers ---------- */
@@ -484,7 +632,10 @@ function RoleCard({ role, max, index = 0 }) {
           ) : null}
         </div>
 
-        <div className={["shrink-0 rounded-full px-3 py-1 text-xs ring-1 transition-transform duration-200 group-hover:scale-[1.03]", style.badge].join(" ")} title="Tier">
+        <div
+          className={["shrink-0 rounded-full px-3 py-1 text-xs ring-1 transition-transform duration-200 group-hover:scale-[1.03]", style.badge].join(" ")}
+          title="Tier"
+        >
           {role.tier}
         </div>
       </div>
@@ -499,18 +650,10 @@ function RoleCard({ role, max, index = 0 }) {
         </div>
 
         <div className="mt-3 h-2.5 w-full rounded-full bg-gray-100 ring-1 ring-gray-100 overflow-hidden">
-          <div
-            className={["h-full rounded-full", style.bar].join(" ")}
-            style={{
-              width: `${pct}%`,
-              transition: "width 900ms cubic-bezier(.2,.8,.2,1)",
-            }}
-          />
+          <div className={["h-full rounded-full", style.bar].join(" ")} style={{ width: `${pct}%`, transition: "width 900ms cubic-bezier(.2,.8,.2,1)" }} />
         </div>
 
-        {role.desc ? (
-          <div className="mt-3 text-sm text-slate-700 leading-relaxed line-clamp-4">{role.desc}</div>
-        ) : null}
+        {role.desc ? <div className="mt-3 text-sm text-slate-700 leading-relaxed line-clamp-4">{role.desc}</div> : null}
       </div>
     </div>
   );
