@@ -126,7 +126,7 @@ export default function Page() {
       { name: "Ritty", count: 511, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
       { name: "Bitty", count: 940, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "bitty" },
       { name: "NPC", count: 3134, tier: "Bad", desc: "This is just a shameful public badge.", tag: "NPC" },
-      { name: "Dunce", count: 138, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
+      { name: "Dunce", count: 231, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
       { name: "Ascendant", count: 3546, tier: "Common", desc: "You have pledged to Ritual.", tag: "Ascendant" },
       { name: "Harmonic", count: 2550, tier: "Common", desc: "Not special at all.", tag: "Harmonic" },
       { name: "Blessed", count: 7731, tier: "Common", desc: "Forever blessed.", tag: "Blessed" },
