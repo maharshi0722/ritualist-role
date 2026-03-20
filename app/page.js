@@ -27,7 +27,7 @@ function RoleEmoji({ tag, className = "" }) {
     mage: { emoji: "🧙", color: "text-indigo-700", bg: "bg-indigo-50" },
     ritualist: { emoji: "🔥", color: "text-emerald-700", bg: "bg-emerald-50" },
     ritty: { emoji: "🕯️", color: "text-amber-700", bg: "bg-amber-50" },
-    "ritty bitty": { emoji: "", color: "text-amber-700", bg: "bg-amber-50" },
+    "bitty": { emoji: "", color: "text-amber-700", bg: "bg-amber-50" },
     "radiant ritualist": { emoji: "✨", color: "text-amber-700", bg: "bg-amber-50" },
     dunce: { emoji: "", color: "text-slate-700", bg: "bg-slate-50" },
   };
@@ -123,15 +123,15 @@ export default function Page() {
       { name: "Mods", count: 7, tier: "Epic", desc: "Moderators keeping the community clean and active.", tag: "Mods" },
       { name: "Foundation Team", count: 16, tier: "Legendary", desc: "Core foundation members building and steering Ritual.", tag: "Foundation Team" },
 
-      { name: "Ritty", count: 432, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
-      { name: "Ritty-Bitty", count: 727, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "ritty bitty" },
+      { name: "Ritty", count: 511, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
+      { name: "Bitty", count: 940, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "bitty" },
       { name: "NPC", count: 3134, tier: "Bad", desc: "This is just a shameful public badge.", tag: "NPC" },
       { name: "Dunce", count: 138, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
       { name: "Ascendant", count: 3546, tier: "Common", desc: "You have pledged to Ritual.", tag: "Ascendant" },
       { name: "Harmonic", count: 2550, tier: "Common", desc: "Not special at all.", tag: "Harmonic" },
       { name: "Blessed", count: 7731, tier: "Common", desc: "Forever blessed.", tag: "Blessed" },
       { name: "Cursed", count: 1831, tier: "Common", desc: "Always cursed.", tag: "Cursed" },
-      { name: "Community", count: 59958, tier: "All", desc: "Everyone who’s part of the Ritual universe.", tag: "Community" },
+      { name: "Community", count: 59758, tier: "All", desc: "Everyone who’s part of the Ritual universe.", tag: "Community" },
     ],
     []
   );
