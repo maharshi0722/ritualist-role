@@ -116,22 +116,22 @@ export default function Page() {
   const roles = useMemo(
     () => [
       { name: "Radiant Ritualist", count: 3, tier: "Legendary", desc: "Golden Ritualist super rare, only for real leaders.", tag: "Radiant Ritualist" },
-      { name: "Ritualist", count: 81, tier: "Epic", desc: "Becoming a Ritualist is the highest honor in our community.", tag: "Ritualist" },
-      { name: "Mage", count: 67, tier: "Rare", desc: "Ritualist with a mage specialization.", tag: "Mage" },
+      { name: "Ritualist", count: 118, tier: "Epic", desc: "Becoming a Ritualist is the highest honor in our community.", tag: "Ritualist" },
+      { name: "Mage", count: 77, tier: "Rare", desc: "Ritualist with a mage specialization.", tag: "Mage" },
       { name: "Zealot", count: 23, tier: "Epic", desc: "High-conviction community member consistently shows up.", tag: "Zealot" },
 
       { name: "Mods", count: 7, tier: "Epic", desc: "Moderators keeping the community clean and active.", tag: "Mods" },
       { name: "Foundation Team", count: 16, tier: "Legendary", desc: "Core foundation members building and steering Ritual.", tag: "Foundation Team" },
 
-      { name: "Ritty", count: 511, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
-      { name: "Bitty", count: 940, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "bitty" },
+      { name: "Ritty", count: 547, tier: "Rare", desc: "Long-term, loyal community member.", tag: "ritty" },
+      { name: "Bitty", count: 1014, tier: "Started", desc: "You’re a little bitty baby Ritualist.", tag: "bitty" },
       { name: "NPC", count: 3134, tier: "Bad", desc: "This is just a shameful public badge.", tag: "NPC" },
       { name: "Dunce", count: 231, tier: "Bad", desc: "Spammer role.", tag: "Dunce" },
       { name: "Ascendant", count: 3546, tier: "Common", desc: "You have pledged to Ritual.", tag: "Ascendant" },
       { name: "Harmonic", count: 2550, tier: "Common", desc: "Not special at all.", tag: "Harmonic" },
       { name: "Blessed", count: 7731, tier: "Common", desc: "Forever blessed.", tag: "Blessed" },
       { name: "Cursed", count: 1831, tier: "Common", desc: "Always cursed.", tag: "Cursed" },
-      { name: "Community", count: 59758, tier: "All", desc: "Everyone who’s part of the Ritual universe.", tag: "Community" },
+      { name: "Community", count: 59492, tier: "All", desc: "Everyone who’s part of the Ritual universe.", tag: "Community" },
     ],
     []
   );
