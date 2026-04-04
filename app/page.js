@@ -177,7 +177,7 @@ export default function Page() {
     return list;
   }, [roles, query, activeTier]);
 
-  const totalHolders = 109303;
+  const totalHolders = 108074;
 
   useEffect(() => {
     function onResize() {
