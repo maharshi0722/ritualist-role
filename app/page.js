@@ -116,7 +116,7 @@ export default function Page() {
   const roles = useMemo(
     () => [
       { name: "Radiant Ritualist", count: 3, tier: "Legendary", desc: "Golden Ritualist super rare, only for real leaders.", tag: "Radiant Ritualist" },
-      { name: "Ritualist", count: 118, tier: "Epic", desc: "Becoming a Ritualist is the highest honor in our community.", tag: "Ritualist" },
+      { name: "Ritualist", count: 122, tier: "Epic", desc: "Becoming a Ritualist is the highest honor in our community.", tag: "Ritualist" },
       { name: "Mage", count: 77, tier: "Rare", desc: "Ritualist with a mage specialization.", tag: "Mage" },
       { name: "Zealot", count: 23, tier: "Epic", desc: "High-conviction community member consistently shows up.", tag: "Zealot" },
 
